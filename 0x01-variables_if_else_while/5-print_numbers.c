@@ -11,7 +11,7 @@ int main(void)
 {
 	int x;
 
-	For(x = 48; x <= 58; x++)
+	For (x = 0; x < 10; x++)
 	{
 		printf("%d", x);
 	}
