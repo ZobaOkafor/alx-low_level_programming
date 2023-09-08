@@ -11,10 +11,10 @@ int main(void)
 {
 	int x;
 
-	For (x = 0; x < 10; x++);
+	for (x = 0; x < 10; x++)
 	{
 		printf("%d", x);
 	}
-		putchar('\n');
+		printf('\n');
 	return (0);
 }
