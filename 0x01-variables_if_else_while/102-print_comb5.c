@@ -10,7 +10,7 @@
 int main(void)
 {
 	int x;
-	int j;
+	int y;
 
 	for (x = 0; y < 100; y++)
 	{
