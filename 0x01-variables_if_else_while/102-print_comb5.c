@@ -9,8 +9,7 @@
 
 int main(void)
 {
-	int x;
-	int y;
+	int x, y;
 
 	for (x = 0; y < 100; y++)
 	{
