@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _islower - This function prints the last digit of a number.
+ * print_last_digit - This function prints the last digit of a number.
  *
  * @n: The character to check.
  *
