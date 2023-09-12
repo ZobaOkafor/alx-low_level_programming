@@ -1,4 +1,4 @@
-#include <stdioh>
+#include <stdio.h>
 
 /**
  * main - This program prints first 50 Fibonacci numbers,
