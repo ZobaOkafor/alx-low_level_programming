@@ -3,31 +3,18 @@
 /**
  * _islower - This function checks for lowercase character.
  *
- * Return: Always 0.
+ * Return: 1 if character is loercase, else return 0.
  */
 
 int _islower(int c)
 {
-	if (_islower(c))
+	if (c >= 'a' && c <= 'Z')
 	{
-		return 1;
+		return (1);
 	}
 	else
 	{
-		return 0;
-	}
-}
-
-int _islower(int c)
-{
-	char ch = 'a';
-	if (_islower(ch))
-	{
-		_putchar(ch);
-	}
-	else 
-	{
-		_putchar(ch);
+		return (0);
 	}
 	_putchar('\n');
-}	
+}
