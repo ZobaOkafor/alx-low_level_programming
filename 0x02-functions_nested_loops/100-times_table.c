@@ -5,7 +5,7 @@
  * starting from 0.
  *
  * @n: number of time tables.
- :
+ *
  * Return: no return.
  */
 
