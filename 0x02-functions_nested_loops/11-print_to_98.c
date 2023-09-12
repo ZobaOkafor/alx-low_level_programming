@@ -10,8 +10,8 @@
 
 void print_to_98(int n)
 {
-	n = 0;
-	for (n = 0; n < 98; n++)
+	int i = 0;
+	for (i = 0; i <= 98; i++)
 	{
 		_putchar(',');
 		_putchar(n % 98);
