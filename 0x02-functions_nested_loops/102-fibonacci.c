@@ -24,10 +24,6 @@ int main(void)
 	{
 		printf("\n");
 	}
-	else
-	{
-		printf(", ");
-	}
 
 	return (0);
 }
