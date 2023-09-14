@@ -4,7 +4,7 @@
  * print_numbers - This function print numbers from 0 - 9
  *
  *
- * Return: Always 0
+ * Return: no return
  */
 
 void print_numbers(void)
@@ -18,5 +18,4 @@ void print_numbers(void)
 		i++;
 	}
 	_putchar('\n');
-	return (0);
 }
