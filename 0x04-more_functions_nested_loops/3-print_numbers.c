@@ -3,7 +3,6 @@
 /**
  * print_numbers - This function print numbers from 0 - 9
  *
- *
  * Return: no return
  */
 
