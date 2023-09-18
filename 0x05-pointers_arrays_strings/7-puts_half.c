@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
- * _strlen - Function that returns the length of a string
- * @s: string
+ * puts_half - Function that prints half of a string
+ * followed by a new line
+ * @str: a pointer to the int
  *
- * Return: length of string
+ * Return: no return
  */
 
 void puts_half(char *str)
@@ -16,9 +17,9 @@ void puts_half(char *str)
 		i++;
 	}
 
-	j = i / 2;
+	j = (i + 1) / 2;
 
-	for (i = j; str[i] != '\0'; i++)
+	for (i = j; str[i]; i++)
 	{
 		_putchar(str[i]);
 	}
