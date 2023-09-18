@@ -7,7 +7,7 @@
  * Return: length of string
  */
 
-void puts2(char *str);
+void puts2(char *str)
 {
 	int i;
 
