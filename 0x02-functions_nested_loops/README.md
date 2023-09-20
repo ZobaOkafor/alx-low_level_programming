@@ -1,1 +1,1 @@
-This repository houses tasks on C functions - nested loops
+This directory houses tasks on C functions - nested loops
