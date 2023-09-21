@@ -13,7 +13,7 @@ int _strcmp(char *s1, char *s2)
 	if (*s1  == '\0' && *s2 == '\0')
 		return (0);
 	else if (*s1 == *s2)
-		return (s1 + 1, s2 +1);
+		return _strcmp(s1 + 1, s2 +1);
 	else
 		return (*s1 - *s2);
 }
