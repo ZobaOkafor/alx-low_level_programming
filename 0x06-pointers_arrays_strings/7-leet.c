@@ -12,8 +12,8 @@ char *leet(char *s)
 	int i;
 	int j;
 
-	char a[] = {'a','e','o','t','l'};
-	char b[] = {'A','E','O','T','L'};
+	char a[] = {'a', 'e', 'o', 't', 'l'};
+	char b[] = {'A', 'E', 'O', 'T', 'L'};
 
 	for (i = 0; s[i] != '\0', i++)
 	{
