@@ -20,7 +20,7 @@ void print_line(char *c, int s, int l)
 		if (i <= s)
 			printf("%02x", c[l * 10 + i]);
 		else
-			printf(" ");
+			printf("  ");
 		if (i % 2)
 			putchar(' ');
 	}
