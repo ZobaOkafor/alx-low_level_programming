@@ -21,13 +21,13 @@ void print_buffer(char *b, int size)
 		return;
 	}
 	for (i = 0; i < size; i += 10)
-		printf("%08X", i);
+		printf("%.8X ", i);
 	for (j = i; j < i + 10; j++)
 	{
 		if (j < size)
-			printf("%02X", (unsigned char)b[j]);
+			printf("%.2X ", (unsigned char)b[j]);
 		else
-			printf("  ");
+			printf("   ");
 	}
 	printf(" ");
 	for (j = i; j < i + 10; j++)
