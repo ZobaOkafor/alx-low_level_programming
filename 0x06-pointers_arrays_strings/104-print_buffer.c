@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdio.h>
+#include <ctype.h>
 
 /**
  * print_buffer - A function that prints a buffer
@@ -11,7 +13,9 @@
 void print_buffer(char *b, int size)
 {
 	int i;
-	
+	int j;
+	int isprint;
+
 	if (size <= 0)
 	{
 		printf("\n");
@@ -21,7 +25,7 @@ void print_buffer(char *b, int size)
 		printf("%08X ", i);
 	for (j = i; j < i + 10; j++)
 	{
-		if (j < size) 
+		if (j < size)
 			printf("%02X ", b[j]);
 		else
 			printf("   ");
