@@ -1,6 +1,5 @@
 #include "main.h"
 #include <stdio.h>
-#include <ctype.h>
 
 /**
  * print_buffer - A function that prints a buffer
@@ -30,7 +29,7 @@ void print_buffer(char *b, int size)
 				if (j < size)
 					printf("%.2x", *(b + j));
 				else
-					printf("  ");
+					printf("   ");
 			}
 			printf(" ");
 			for (k = j; k < j + 10; k++)
