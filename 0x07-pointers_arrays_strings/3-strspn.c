@@ -12,22 +12,23 @@
 unsigned int _strspn(char *s, char *accept)
 {
 	unsigned int len = 0;
-	char *a = accept;
+	int i;
 
-	while (*s != '\0')
+	while (*s)
 	{
-		while (*a != '\0')
-			if (*s == *a)
+		for (i = 0; accept[i]; i++)
+		{
+			if (*s == accept[i])
 			{
 				len++;
 				break;
 			}
-			a++;
 
-		if (*a == '\0')
-			break;
+			else if (accept[i + 1] == '\0')
+				return (len);
+		}
 		s++;
-
-		return (len);
 	}
+
+	return (len);
 }
