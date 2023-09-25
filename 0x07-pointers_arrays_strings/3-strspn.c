@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * int_strspn - This function gets the length of a prefix substring
+ * _strspn - This function gets the length of a prefix substring
  * @s: string
  * @accept: substring
  *
@@ -9,7 +9,7 @@
  * which consist only of bytes from accept
  */
 
-unsigned int_strspn(char *s, char *accept)
+unsigned int _strspn(char *s, char *accept)
 {
 	unsigned int len = 0;
 	char *a = accept;
