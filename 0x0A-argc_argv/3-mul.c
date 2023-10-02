@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		puts("Error\n");
+		puts("Error");
 		return (1);
 	}
 
