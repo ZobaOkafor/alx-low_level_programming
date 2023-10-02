@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-/*
+/**
  * main - This program adds positive numbers
  * @argc: argument count
  * @argv: array of strings
@@ -10,32 +10,25 @@
  * Return: Always 0
  */
 
-int main(int argc, char **agrv)
+int main(int argc, char **argv)
 {
-	int i, j, k;
-	int num;
-	int add = 0;
+	int j, k;
+	int sum = 0;
 
-	for (i = 1; i < argc; i++)
+	for (j = 1; j < argc; j++)
 	{
-		for (j = 0; argv[i][j] != '\0'; j++)
+		for (k = 0; argv[j][k] != '\0'; k++)
 		{
-			if (argv[i][j] > '9' || argv[i][j] < '0')
+			if (!isdigit(argv[j][k]))
 			{
 				printf("Error\n");
 				return (1);
 			}
 		}
-	}
-	for (k = 1; k < argc; k++)
-	{
-		num = atoi(argv[k]);
-		if (num >= 0)
-		{
-			add += num;
-		}
+
+		sum += atoi(argv[j]);
 	}
 
-	printf("%d\n", add);
+	printf("%d\n", sum);
 	return (0);
 }
