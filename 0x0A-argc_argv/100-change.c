@@ -10,12 +10,12 @@
  * Return: Always 0
  */
 
-int main(int argc, int **argv)
+int main(int argc, int *argv[])
 {
 	int j;
 	int num;
 	int result;
-	int coins[];
+	int coins[] = {25, 10, 5, 2, 1};
 
 	if (argc != 2)
 	{
