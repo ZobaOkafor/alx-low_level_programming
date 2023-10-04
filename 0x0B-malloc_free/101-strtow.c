@@ -45,16 +45,16 @@ char **strtow(char *str)
 	char **mat, *tmp;
 	int i, k, w, c, strl, start, end;
 
+	i = 0;
 	k = 0;
 	c = 0;
 	strl = 0;
 
-	while (*(str + strl))
+	while (str[strl])
 		strl++;
 	w = count_word(str);
 	if (w == 0)
 		return (NULL);
-
 	mat = (char **)malloc((w + 1) * sizeof(char *));
 	if (mat == NULL)
 		return (NULL);
