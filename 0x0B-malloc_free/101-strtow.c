@@ -14,6 +14,7 @@ int count_word(char *s)
 	int c, w, flag;
 
 	flag = 0;
+	c = 0;
 	w = 0;
 
 	while (s[c] != '\0')
