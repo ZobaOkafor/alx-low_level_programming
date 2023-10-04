@@ -17,7 +17,7 @@ int count_word(char *s)
 	c = 0;
 	w = 0;
 
-	while (s[c] != '\0')
+	for (c = 0; s[c] != '\0'; c++)
 	{
 		if (s[c] == ' ')
 			flag = 0;
@@ -27,7 +27,6 @@ int count_word(char *s)
 			w++;
 		}
 	}
-	c++;
 
 	return (w);
 }
