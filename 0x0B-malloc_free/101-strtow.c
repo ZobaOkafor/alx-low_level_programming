@@ -43,12 +43,7 @@ int count_word(char *s)
 char **strtow(char *str)
 {
 	char **mat, *tmp;
-	int i, k, w, c, strl, start, end;
-
-	i = 0;
-	k = 0;
-	c = 0;
-	strl = 0;
+	int i = 0, k = 0, c = 0, w, strl = 0, start, end;
 
 	while (str[strl])
 		strl++;
@@ -69,9 +64,12 @@ char **strtow(char *str)
 				if (tmp == NULL)
 					return (NULL);
 				while (start < end)
-					*tmp++ = str[start++];
-				*tmp = '\0';
-				mat[k] = tmp - c;
+				{
+					tmp[start - start] = str[start];
+					start++;
+				}
+				tmp[end - start] = '\0';
+				mat[k] = tmp;
 				k++;
 				c = 0;
 			}
