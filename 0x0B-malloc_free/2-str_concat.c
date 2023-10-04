@@ -26,13 +26,13 @@ char *str_concat(char *s1, char *s2)
 
 	if (s1)
 	{
-		for (; i < strl1; i++)
+		for (i = 0; i < strl1; i++)
 			s[i] = s1[i];
 	}
 
 	if (s2)
 	{
-		for (; i < (strl1 + strl2); i++, j++)
+		for (i = 0; i < (strl1 + strl2); i++, j++)
 			s[i] = s2[j];
 	}
 	s[i] = '\0';
