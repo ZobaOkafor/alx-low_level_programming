@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
 
@@ -19,20 +18,20 @@ char *str_concat(char *s1, char *s2)
 
 	for (strl2 = 0; s2 && s2[strl2]; strl2++)
 
-	s = malloc((strl1 + strl2 + 1) * sizeof(char));
+	s = (char *)malloc((strl1 + strl2 + 1) * sizeof(char));
 
 	if (s == NULL)
 		return (NULL);
 
 	if (s1)
 	{
-		for (i = 0; i < strl1; i++)
+		for (; i < strl1; i++)
 			s[i] = s1[i];
 	}
 
 	if (s2)
 	{
-		for (i = 0; i < (strl1 + strl2); i++, j++)
+		for (; i < (strl1 + strl2); i++, j++)
 			s[i] = s2[j];
 	}
 	s[i] = '\0';
