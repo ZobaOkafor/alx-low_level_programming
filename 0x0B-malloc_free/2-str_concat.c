@@ -14,9 +14,11 @@ char *str_concat(char *s1, char *s2)
 	char *s;
 	unsigned int i = 0, j = 0, strl1 = 0, strl2 = 0;
 
-	for (; s1[strl1] <= '\0'; strl1++)
+	while (s1 && s1[strl1] != '\0')
+		strl1++;
 
-	for (; s2[strl2] <= '\0'; strl2++)
+	while (s2 &&  s2[strl2] != '\0')
+		strl2++;
 
 	s = (char *)malloc((strl1 + strl2 + 1) * sizeof(char));
 
