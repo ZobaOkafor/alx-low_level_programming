@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define __FILE__
+#define __FILE__ 2-main.c
 
 /** 
  * main - This program prints the name of the file it was compiled from
@@ -11,9 +11,5 @@
 
 int main(void)
 {
-	char filename = "2-main.c"
-	
-	printf("%c\n", filename);
-
-	return (0);
+	printf("%s\n", __FILE__);
 }
