@@ -3,14 +3,14 @@
 
 struct dog
 {
-        char *name;
-        float age;
-        char *owner;
+	char *name;
+	float age;
+	char *owner;
 };
 
 
 /**
- * init_dog - This function initializes a variable of type 'struct dog'. 
+ * init_dog - This function initializes a variable of type 'struct dog'.
  * @d: sturct pointer
  * @name: 1st member
  * @age: 2nd member
@@ -18,7 +18,7 @@ struct dog
  *
  */
 
-void init_dog(struct dog *d, char *name, float age, char *owner);
+void init_dog(struct dog *d, char *name, float age, char *owner)
 {
 	if (d == NULL)
 	{
