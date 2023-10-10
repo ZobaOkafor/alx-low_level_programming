@@ -13,7 +13,7 @@ int main(void)
 {
 	char filename = "2-main.c"
 	
-	printf("%s\n", filename);
+	printf("%c\n", filename);
 
 	return (0);
 }
