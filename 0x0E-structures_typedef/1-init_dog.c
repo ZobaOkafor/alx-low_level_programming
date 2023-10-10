@@ -1,12 +1,6 @@
 #include "main.h"
+#include "dog.h"
 #include <stdlib.h>
-
-struct dog
-{
-	char *name;
-	float age;
-	char *owner;
-};
 
 
 /**
