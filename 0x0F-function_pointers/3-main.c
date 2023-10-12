@@ -8,11 +8,11 @@
  * Return: Always 0 (Success)
  */
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
 	int arg1, arg2, result;
-	int (*func)(int, int);
 	char op;
+	int (*func)(int, int);
 
 	if (argc != 4)
 	{
