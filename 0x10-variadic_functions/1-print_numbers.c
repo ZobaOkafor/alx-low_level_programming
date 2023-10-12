@@ -23,24 +23,11 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 		num = va_arg(integers, int);
 		printf("%d", num);
 
-		if (i < n - 1 && separator != NULL)
+		if (i < n - 1)
 			printf("%s", separator);
 	}
 
-	va_end(integers);
-
 	printf("\n");
-}
 
-
-/**
- * main - check the code
- *
- * Return: Always 0.
- */
-
-int main(void)
-{
-	print_numbers(", ", 4, 0, 98, -1024, 402);
-	return (0);
+	va_end(integers);
 }
