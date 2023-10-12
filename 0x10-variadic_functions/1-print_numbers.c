@@ -21,13 +21,9 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	for (i = 0; i < n; i++)
 	{
 		num = va_arg(integers, int);
-		if (separator != 0)
-			printf("%d", num);
+		printf("%d", num);
 
-		else if (separator && i == 0)
-			printf("%d", num);
-
-		if (i < n - 1)
+		if (i < n - 1 && separator != NULL)
 			printf("%s", separator);
 	}
 
