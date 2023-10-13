@@ -25,11 +25,14 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		if (str == NULL)
 			printf("nil");
 
-		else
+		if (separator != NULL)
 			printf("%s", str);
 
-		if (i && separator == NULL)
-			printf("%s", separator);
+		else if (i && separator == NULL)
+			printf("%s", str);
+
+		else
+			printf("%s%s", separator, str);
 	}
 
 	printf("\n");
