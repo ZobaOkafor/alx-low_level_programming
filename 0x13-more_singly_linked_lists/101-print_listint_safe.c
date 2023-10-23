@@ -1,53 +1,28 @@
 #include "lists.h"
 
+
 /**
- * find_listint_loop_len - This function finds the loop in a linked list
+ * free_slists - This function frees a linked list
  * @head: pointer to the list
  *
- * Return: the address of the node where the loop starts,
- * or NULL if there is no loop
+ * Return: nothing
  */
 
-size_t find_listint_loop_len(const listint_t *head)
+void free_slists(slists_t **head)
 {
-	const listint_t *faster = head;
-	const listint_t *slower = head;
-	size_t count = 1;
+	slists_t *tmp;
+	slists_t *current;
 
-	if (head == NULL || head->next == NULL)
-		return (0);
-
-	slower = head->next;
-	faster = (head->next)->next;
-
-	while (faster)
+	if (head != NULL)
 	{
-
-		if (slower == faster)
+		current = *head;
+		while ((tmp = current) != NULL)
 		{
-			slower = head;
-
-			while (slower != faster)
-			{
-				count++;
-				slower = slower->next;
-				faster = faster->next;
-			}
-
-			slower = slower->next;
-			while (slower != faster)
-			{
-				count++;
-				slower = slower->next;
-			}
-
-			return (count);
+			current = current->next;
+			free(tmp);
 		}
-		slower = slower->next;
-		faster = (faster->next)->next;
+		*head = NULL;
 	}
-
-	return (0);
 }
 
 
@@ -55,34 +30,45 @@ size_t find_listint_loop_len(const listint_t *head)
  * print_listint_safe - This function prints a linked list
  * @head: pointer to the list
  *
- * Return: the number of nodes in the list
+ * Return: number of nodes in the list
  */
 
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t count;
-	size_t idx = 0;
+	size_t count = 0;
+	slists_t *h, *new, *add;
 
-	count = find_listint_loop_len(head);
+	h = NULL;
 
-	if (count == 0)
+	while (head != NULL)
 	{
-		for (; head != NULL; count++)
+		new = malloc(sizeof(slists_t));
+
+		if (new == NULL)
+			exit(98);
+
+		new->p = (void *)head;
+		new->next = h;
+		h = new;
+
+		add = h;
+
+		while (add->next != NULL)
 		{
-			printf("[%p] %d\n", (void *)head, head->n);
-			head = head->next;
+			add = add->next;
+			if (head == add->p)
+			{
+				printf("-> [%p] %d\n", (void *)head, head->n);
+				free_slists(&h);
+				return (count);
+			}
 		}
+
+		printf("[%p] %d\n", (void *)head, head->n);
+		head = head->next;
+		count++;
 	}
 
-	else
-	{
-		for (idx = 0; idx < count; idx++)
-		{
-			printf("-> [%p] %d\n", (void *)head, head->n);
-			head = head->next;
-		}
-		printf("-> [%p] %d\n", (void *)head, head->n);
-	}
-
+	free_slists(&h);
 	return (count);
 }
