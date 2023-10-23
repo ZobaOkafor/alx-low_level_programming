@@ -7,7 +7,7 @@
  * @idx: index where the new node is to be added
  * @n: data
  *
- * Return: the address of node the new nud or NULL ifit fails
+ * Return: the address of the new node or NULL if it fails
  */
 
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
