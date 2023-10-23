@@ -6,11 +6,37 @@
  * @head: pointer to the list
  * @index: index where the new node is to be deleted
  *
- * Return: the address of node the new nud or NULL ifit fails
+ * Return: 1 if successful or -1 if it fails
  */
 
-listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
+int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-        listint_t *new;
-        listint_t *tmp = *head;
-        unsigned int count = 0;
+	listint_t *cur_node = *head;
+	listint_t *tmp;
+	unsigned int count = 0;
+
+	if (cur_node == NULL)
+		return (-1);
+
+	if (index == 0)
+	{
+		*head = cur_node->next;
+		free(cur_node);
+		return (1);
+	}
+
+	while (cur_node != NULL && count < (index - 1))
+	{
+		cur_node = cur_node->next;
+		count++;
+	}
+
+	if (cur_node == NULL || cur_node->next == NULL)
+		return (-1);
+
+	tmp = cur_node->next;
+	cur_node->next = tmp->next;
+	free(tmp);
+
+	return (1);
+}
