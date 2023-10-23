@@ -23,6 +23,23 @@ typedef struct listint_s
 } listint_t;
 
 
+
+/**
+ * struct slists - singly linked list
+ * @p: pointer to nodes
+ * @next: points to the next node
+ *
+ * Description: singly linked list node structure
+ *
+ */
+typedef struct slists
+{
+	void *p;
+	struct slists *next;
+} slists_t;
+
+
+
 int _putchar(char c);
 size_t print_listint(const listint_t *h);
 size_t listint_len(const listint_t *h);
