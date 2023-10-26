@@ -11,7 +11,6 @@
 
 void print_binary(unsigned long int n)
 {
-	int bits;
 	int i = 1, j = 0;
 	int num_bits = 0;
 	int tmp;
@@ -34,13 +33,14 @@ void print_binary(unsigned long int n)
 
 	while (i > 0)
 	{
-		bits = (n & i) != 0;
-
-		if (bits == 1 || j == 1)
-			_putchar(bits + '0');
-
-		if (bits == 1)
+		if ((n & i) != 0)
+		{
+			_putchar('1');
 			j = 1;
+		}
+
+		else if (j == 1)
+			_putchar('0');
 
 		i = i >> 1;
 	}
