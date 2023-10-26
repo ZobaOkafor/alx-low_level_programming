@@ -26,7 +26,7 @@ void print_binary(unsigned long int n)
 	while (tmp > 0)
 	{
 		num_bits++;
-		tmp = tmp >> 1;
+		tmp = tmp >>= 1;
 	}
 
 	i = 1 << (num_bits - 1);
