@@ -13,8 +13,8 @@ void print_binary(unsigned long int n)
 {
 	int i, bits;
 	int num_bits = 0;
-	int print_bit = 0;
-	unsigned long int j;
+	int print_bits = 0;
+	unsigned long int flag;
 
 	if (n == 0)
 	{
@@ -26,13 +26,13 @@ void print_binary(unsigned long int n)
 
 	for (i = num_bits - 1; i >= 0; i--)
 	{
-		j = 1UL << i;
-		bits = (n & j) ? 1 : 0;
+		flag = 1UL << i;
+		bits = (n & flag) ? 1 : 0;
 
-		if (bits || print_bit)
+		if (bits || print_bits)
 		{
 			_putchar(bits + '0');
-			print_bit = 1;
+			print_bits = 1;
 		}
 	}
 }
