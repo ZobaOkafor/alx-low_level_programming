@@ -97,5 +97,6 @@ int main(int argc, char *argv[])
 			exit(99);
 		}
 	}
+	close_file(fd_from, fd_to);
 	return (0);
 }
