@@ -2,8 +2,8 @@
 
 /**
  * create_file - This function creates a file
- * @filename: name of file to create
- * @text_content: name of null terminating dtring to write in the file
+ * @filename: the name of file to create
+ * @text_content: the name of null terminating string to write in the file
  *
  * Return: 1 on success, -1 on failure
  */
