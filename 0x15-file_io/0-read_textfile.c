@@ -20,9 +20,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	r = fread(buffer, 1, letters, fp);
 	w = fwrite(buffer, 1, r, stdout);
 
-	if (filename == NULL)
-		return (0);
-
 	if (fp == NULL)
 		return (0);
 
