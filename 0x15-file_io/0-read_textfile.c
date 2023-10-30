@@ -15,9 +15,14 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	char ch;
 	size_t i = 0;
 	int count = 0;
+	char *buffer;
 
 	fp = fopen(filename, "r");
 	if (fp == NULL)
+		return (0);
+
+	buffer = malloc(sizeof(char) * letters);
+	if (buffer == NULL)
 		return (0);
 
 	while ((ch = fgetc(fp)) != EOF)
