@@ -27,22 +27,24 @@ void close_file(int fd_from, int fd_to)
 /**
  * error_exit - This function exits the program with an error message
  * and an exit code
- * @ex_code: the exit code to return when program exits
- * @format: string for the error message
+ * @file_from: source file
+ * @file_to: destination file
+ * @argv: array pointer
  *
  */
 
-void error_exit(int ex_code, const char *format, ...)
+void error_exit(int file_from, int file_to, char *argv[])
 {
-	va_list err;
-
-	va_start(err, format);
-
-	dprintf(2, format, err);
-
-	va_end(err);
-
-	exit(ex_code);
+	if (file_from == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	if (file_to == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	}
 }
 
 
