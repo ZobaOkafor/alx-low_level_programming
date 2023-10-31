@@ -3,22 +3,26 @@
 
 /**
  * close_file - Closes file descriptors
- * @fd_from: The file descriptor to be closed
- * @fd_to: The file descriptor to be closed
+ * @file_from: The file descriptor to be closed
+ * @file_to: The file descriptor to be closed
  *
  */
 
-void close_file(int fd_from, int fd_to)
+void close_file(int file_from, int file_to)
 {
-	if (close(fd_from) == -1)
+	int eclose;
+
+	eclose = close(file_from);
+	if (eclose == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", fd_from);
+		dprintf(2, "Error: Can't close fd %d\n", file_from);
 		exit(100);
 	}
 
-	if (close(fd_to) == -1)
+	eclose = close(file_to);
+	if (eclose == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", fd_to);
+		dprintf(2, "Error: Can't close fd %d\n", file_to);
 		exit(100);
 	}
 }
