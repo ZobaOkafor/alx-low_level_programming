@@ -92,6 +92,7 @@ int main(int argc, char *argv[])
 			exit(99);
 		}
 	}
+	close_file(file_from, file_to);
 
 	return (0);
 }
