@@ -14,7 +14,7 @@ void handle_type(unsigned char *p);
 void handle_entry_point_addr(unsigned long int e_entry, unsigned char *p);
 int check_if_elf(unsigned char *p);
 void check_system(unsigned char *p);
-
+void close_elf(int elf);
 
 
 /**
@@ -267,6 +267,22 @@ void check_system(unsigned char *p)
 	handle_osabi(p);
 	handle_type(p);
 	handle_class(p);
+}
+
+
+/**
+ * close_elf - This function closes an ELF file
+ * @elf: The file descriptor of the ELF file
+ *
+ */
+
+void close_elf(int elf)
+{
+	if (close(elf) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", elf);
+		exit(98);
+	}
 }
 
 
