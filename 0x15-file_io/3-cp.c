@@ -2,33 +2,6 @@
 #include <stdarg.h>
 
 /**
- * close_file - Closes file descriptors
- * @file_from: The file descriptor to be closed
- * @file_to: The file descriptor to be closed
- *
- */
-
-void close_file(int file_from, int file_to)
-{
-	int eclose;
-
-	eclose = close(file_from);
-	if (eclose == -1)
-	{
-		dprintf(2, "Error: Can't close fd %d\n", file_from);
-		exit(100);
-	}
-
-	eclose = close(file_to);
-	if (eclose == -1)
-	{
-		dprintf(2, "Error: Can't close fd %d\n", file_to);
-		exit(100);
-	}
-}
-
-
-/**
  * error_exit - This function exits the program with an error message
  * and an exit code
  * @file_from: source file
@@ -63,8 +36,7 @@ void error_exit(int file_from, int file_to, char *argv[])
 
 int main(int argc, char *argv[])
 {
-	int file_from;
-	int file_to;
+	int eclose, file_from, file_to;
 	ssize_t rd, wr;
 	char buffer[1024];
 
@@ -84,7 +56,6 @@ int main(int argc, char *argv[])
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
 		}
-
 		wr = write(file_to, buffer, rd);
 		if (wr == -1)
 		{
@@ -92,7 +63,17 @@ int main(int argc, char *argv[])
 			exit(99);
 		}
 	}
-	close_file(file_from, file_to);
-
+	eclose = close(file_from);
+	if (eclose == -1)
+	{
+		dprintf(2, "Error: Can't close fd %d\n", file_from);
+		exit(100);
+	}
+	eclose = close(file_to);
+	if (eclose == -1)
+	{
+		dprintf(2, "Error: Can't close fd %d\n", file_to);
+		exit(100);
+	}
 	return (0);
 }
