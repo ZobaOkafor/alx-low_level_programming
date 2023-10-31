@@ -193,15 +193,19 @@ void handle_type(unsigned char *p)
 
 void handle_entry_point_addr(unsigned long int e_entry, unsigned char *p)
 {
+	unsigned long int swapped;
+	int i;
+
 	printf("  Entry point address:               ");
 
 	if (p[EI_DATA] == ELFDATA2MSB)
 	{
-		e_entry = ((e_entry << 24) & 0xFF000000) |
-			((e_entry << 8) & 0x00FF0000) |
-			((e_entry >> 8) & 0x0000FF00) |
-			((e_entry >> 24) & 0x000000FF);
-	}
+		swapped = 0;
+		for (i = 0; i < sizeof(e_entry); i++)
+		{
+			swapped = (swapped << 8) | (e_entry & 0xFF);
+			e_entry >>= 8;
+		}
 
 	if (p[EI_CLASS] == ELFCLASS32)
 		printf("%#x\n", (unsigned int)e_entry);
