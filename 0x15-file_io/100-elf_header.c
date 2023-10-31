@@ -197,9 +197,10 @@ void handle_entry_point_addr(unsigned long int e_entry, unsigned char *p)
 
 	if (p[EI_DATA] == ELFDATA2MSB)
 	{
-		e_entry = ((e_entry << 8) & 0xFF00FF00) |
-			((e_entry >> 8) & 0x00FF00FF);
-		e_entry = (e_entry << 16) | (e_entry >> 16);
+		e_entry = ((e_entry << 24) & 0xFF000000) |
+			((e_entry >> 8) & 0x00FF0000) |
+			((e_entry >> 8) & 0x0000FF00) |
+			((e_entry >> 24) & 0x000000FF);
 	}
 
 	if (p[EI_CLASS] == ELFCLASS32)
