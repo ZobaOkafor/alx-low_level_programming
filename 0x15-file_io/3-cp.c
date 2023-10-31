@@ -26,31 +26,6 @@ void error_exit(int file_from, int file_to, char *argv[])
 
 
 /**
- * close_file - Closes file descriptors
- * @file_from: The file descriptor to be closed
- * @file_to: The file descriptor to be closed
- *
- */
-
-void close_file(int file_from, int file_to)
-{
-	int eclose;
-
-	eclose = close(file_from);
-	if (eclose == -1)
-	{
-		dprintf(2, "Error: Can't close fd %d\n", file_from);
-		exit(100);
-	}
-	eclose = close(file_to);
-	if (eclose == -1)
-	{
-		dprintf(2, "Error: Can't close fd %d\n", file_to);
-		exit(100);
-	}
-}
-
-/**
  * main - This program copies the contents of one file to another file
  * @argc: argument count
  * @argv: array of pointers to the argument strings
@@ -60,7 +35,7 @@ void close_file(int file_from, int file_to)
 
 int main(int argc, char *argv[])
 {
-	int file_from, file_to;
+	int file_from, file_to, eclose;
 	ssize_t wr, rd;
 	char buffer[1024];
 
@@ -87,6 +62,17 @@ int main(int argc, char *argv[])
 			exit(99);
 		}
 	}
-	close_file = close(file_from, file_to);
+	eclose = close(file_from);
+	if (eclose == -1)
+	{
+		dprintf(2, "Error: Can't close fd %d\n", file_from);
+		exit(100);
+	}
+	eclose = close(file_to);
+	if (eclose == -1)
+	{
+		dprintf(2, "Error: Can't close fd %d\n", file_to);
+		exit(100);
+	}
 	return (0);
 }
