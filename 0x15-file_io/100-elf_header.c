@@ -22,12 +22,12 @@ void handle_osabi(char *p);
 
 int check_elf(char *p)
 {
-	int addr = (int)p[0];
+	int address = (int)p[0];
 	char E = p[1];
 	char L = p[2];
 	char F = p[3];
 
-	if (addr == 127 && E == 'E' && L == 'L' && F == 'F')
+	if (address == 127 && E == 'E' && L == 'L' && F == 'F')
 		return (1);
 
 	return (0);
