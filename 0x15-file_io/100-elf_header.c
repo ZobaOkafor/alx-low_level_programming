@@ -11,6 +11,7 @@ void fetch_data(char *p);
 void handle_version(char *p);
 void handle_type(char *p);
 void handle_osabi(char *p);
+void close_elf(int elf);
 
 
 /**
@@ -221,6 +222,23 @@ void handle_osabi(char *p)
 		printf("<unknown: %x>\n", osabi);
 
 	printf("  ABI Version:                       %d\n", p[8]);
+}
+
+
+/**
+ * close_elf - Closes an ELF file.
+ * @elf: The file descriptor of the ELF file.
+ *
+ * Description: If the file cannot be closed - exit code 98.
+ */
+
+void close_elf(int elf)
+{
+	if (close(elf) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", elf);
+		exit(98);
+	}
 }
 
 
