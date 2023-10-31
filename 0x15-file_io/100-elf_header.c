@@ -136,7 +136,7 @@ void handle_address(char *p)
 
 
 /**
- * fetcht_data - This function fetches the ELF header data
+ * fetch_data - This function fetches the ELF header data
  * @p: pointer
  *
  */
