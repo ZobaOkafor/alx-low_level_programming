@@ -26,42 +26,16 @@ void error_exit(int file_from, int file_to, char *argv[])
 
 
 /**
- * main - This program copies the contents of one file to another file
- * @argc: argument count
- * @argv: array of pointers to the argument strings
+ * close_file - Closes file descriptors
+ * @file_from: The file descriptor to be closed
+ * @file_to: The file descriptor to be closed
  *
- * Return: 0 on success
  */
 
-int main(int argc, char *argv[])
+void close_file(int file_from, int file_to)
 {
-	int file_from, file_to, eclose;
-	ssize_t wr, nch;
-	char buffer[1024];
+	int eclose;
 
-	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
-	file_from = open(argv[1], O_RDONLY);
-	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	nch = 1024;
-	while (nch == 1024)
-	{
-		nch = read(file_from, buffer, 1024);
-		if (nch == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			exit(98);
-		}
-		wr = write(file_to, buffer, nch);
-		if (wr == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			exit(99);
-		}
-	}
 	eclose = close(file_from);
 	if (eclose == -1)
 	{
@@ -73,6 +47,45 @@ int main(int argc, char *argv[])
 	{
 		dprintf(2, "Error: Can't close fd %d\n", file_to);
 		exit(100);
+	}
+}
+
+/**
+ * main - This program copies the contents of one file to another file
+ * @argc: argument count
+ * @argv: array of pointers to the argument strings
+ *
+ * Return: 0 on success
+ */
+
+int main(int argc, char *argv[])
+{
+	int file_from, file_to;
+	ssize_t wr, rd;
+	char buffer[1024];
+
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
+	file_from = open(argv[1], O_RDONLY);
+	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	rd = 1024;
+	while (rd == 1024)
+	{
+		rd = read(file_from, buffer, 1024);
+		if (rd == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			exit(98);
+		}
+		wr = write(file_to, buffer, rd);
+		if (wr == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			exit(99);
+		}
 	}
 	return (0);
 }
