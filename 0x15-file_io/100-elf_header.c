@@ -10,7 +10,10 @@ void handle_address(char *p);
 void fetch_data(char *p);
 void handle_version(char *p);
 void handle_type(char *p);
+void handle_abi(unsigned char *p);
 void handle_osabi(char *p);
+void handle_class(unsigned char *p);
+void handle_entry(unsigned long int e_entry, unsigned char *p);
 void close_elf(int elf);
 
 
@@ -200,6 +203,17 @@ void handle_type(char *p)
 		printf("<unknown: %x>\n", type);
 }
 
+/**
+ * handle_abi - This function handles the ABI version of an ELF header
+ * @p: A pointer to an array
+ */
+
+void handle_abi(unsigned char *p)
+{
+	printf("  ABI Version:                       %d\n",
+			p[EI_ABIVERSION]);
+}
+
 
 /**
  * handle_osabi - This function handles the ELF header osabi
@@ -226,10 +240,60 @@ void handle_osabi(char *p)
 
 
 /**
- * close_elf - Closes an ELF file.
- * @elf: The file descriptor of the ELF file.
+ * handle_class - This function handles the class of an ELF header
+ * @p: pointer
+ */
+
+void handle_class(unsigned char *p)
+{
+	printf("  Class:                             ");
+
+	switch (p[EI_CLASS])
+	{
+		case ELFCLASSNONE:
+			printf("none\n");
+			break;
+		case ELFCLASS32:
+			printf("ELF32\n");
+			break;
+		case ELFCLASS64:
+			printf("ELF64\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", p[EI_CLASS]);
+	}
+}
+
+
+/**
+ * handle_entry - This function handles the entry point of an ELF header
+ * @e_entry: the address of the ELF entry point
+ * @p: pointer
+ */
+
+void handle_entry(unsigned long int e_entry, unsigned char *p)
+{
+	printf("  Entry point address:               ");
+
+	if (p[EI_DATA] == ELFDATA2MSB)
+	{
+		e_entry = ((e_entry << 8) & 0xFF00FF00) |
+			((e_entry >> 8) & 0xFF00FF);
+		e_entry = (e_entry << 16) | (e_entry >> 16);
+	}
+
+	if (p[EI_CLASS] == ELFCLASS32)
+		printf("%#x\n", (unsigned int)e_entry);
+
+	else
+		printf("%#lx\n", e_entry);
+}
+
+
+/**
+ * close_elf - This function closes an ELF file
+ * @elf: The file descriptor of the ELF file
  *
- * Description: If the file cannot be closed - exit code 98.
  */
 
 void close_elf(int elf)
