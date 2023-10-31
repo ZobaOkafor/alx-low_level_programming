@@ -194,7 +194,7 @@ void handle_type(unsigned char *p)
 void handle_entry_point_addr(unsigned long int e_entry, unsigned char *p)
 {
 	unsigned long int swapped;
-	int i;
+	unsigned long int i;
 
 	printf("  Entry point address:               ");
 
@@ -206,6 +206,7 @@ void handle_entry_point_addr(unsigned long int e_entry, unsigned char *p)
 			swapped = (swapped << 8) | (e_entry & 0xFF);
 			e_entry >>= 8;
 		}
+	}
 
 	if (p[EI_CLASS] == ELFCLASS32)
 		printf("%#x\n", (unsigned int)e_entry);
