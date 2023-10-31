@@ -61,12 +61,12 @@ void handle_class(unsigned char *p)
 
 
 /**
- * handle_data - This function handles the data of an ELF header
+ * fetch_data - This function fetches the data of an ELF header
  * @p: pointer
  *
  */
 
-void handle_data(unsigned char *p)
+void fetch_data(unsigned char *p)
 {
 	unsigned char data = p[EI_DATA];
 
@@ -103,7 +103,7 @@ void handle_version(unsigned char *p)
 
 
 /**
- * handle_osabi - This function handles the os/abi of an ELF header
+ * handle_osabi - This function handles the osabi of an ELF header
  * @p: pointer
  *
  */
@@ -262,7 +262,7 @@ void check_system(unsigned char *p)
 	else if (sys == '2')
 		printf("  Class:                             ELF64\n");
 
-	handle_data(p);
+	fetch_data(p);
 	handle_version(p);
 	handle_osabi(p);
 	handle_type(p);
