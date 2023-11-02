@@ -3,18 +3,6 @@
 #include <sys/stat.h>
 #include <elf.h>
 
-int check_elf(char *p);
-void check_system(char *p);
-void handle_magic(char *p);
-void handle_class(unsigned char *p);
-void handle_address(char *p);
-void handle_data(char *p);
-void handle_version(char *p);
-void handle_osabi(char *p);
-void handle_abi(unsigned char *p);
-void handle_type(char *p);
-void handle_entry(unsigned long int e_entry, unsigned char *p);
-void close_elf(int elf);
 
 
 /**
@@ -36,6 +24,7 @@ int check_elf(char *p)
 
 	return (0);
 }
+
 
 /**
  * check_system - This function checks the system
@@ -66,6 +55,7 @@ void check_system(char *p)
 	handle_address(p);
 }
 
+
 /**
  * handle_magic - This function handles the magic info of the ELF header
  * @p: pointer
@@ -84,6 +74,7 @@ void handle_magic(char *p)
 	printf("\n");
 
 }
+
 
 /**
  * handle_address - This function handles the ELF's address
@@ -131,6 +122,7 @@ void handle_address(char *p)
 	printf("\n");
 }
 
+
 /**
  * handle_data - This function handles the ELF header data
  * @p: pointer
@@ -149,6 +141,7 @@ void handle_data(char *p)
 		printf(", big endian\n");
 }
 
+
 /**
  * handle_version - This function handles the ELF header version
  * @p: pointer
@@ -166,6 +159,7 @@ void handle_version(char *p)
 
 	printf("\n");
 }
+
 
 /**
  * handle_type - This function handles the ELF header type
@@ -197,6 +191,7 @@ void handle_type(char *p)
 		printf("<unknown: %x>\n", type);
 }
 
+
 /**
  * handle_abi - This function handles the ABI version of an ELF header
  * @p: A pointer to an array
@@ -207,6 +202,7 @@ void handle_abi(unsigned char *p)
 	printf("  ABI Version:                       %d\n",
 			p[EI_ABIVERSION]);
 }
+
 
 /**
  * handle_osabi - This function handles the ELF header osabi
@@ -257,6 +253,7 @@ void handle_class(unsigned char *p)
 	}
 }
 
+
 /**
  * handle_entry - This function handles the entry point of an ELF header
  * @e_entry: the address of the ELF entry point
@@ -296,6 +293,7 @@ void close_elf(int elf)
 		exit(98);
 	}
 }
+
 
 /**
  * main - This program displays the information contained in the
