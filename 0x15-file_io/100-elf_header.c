@@ -233,7 +233,7 @@ void handle_osabi(char *p)
  * @p: pointer
  */
 
-/*void handle_class(unsigned char *p)
+void handle_class(unsigned char *p)
 {
 	printf("  Class:                             ");
 
@@ -251,7 +251,7 @@ void handle_osabi(char *p)
 		default:
 			printf("<unknown: %x>\n", p[EI_CLASS]);
 	}
-}*/
+}
 
 
 /**
