@@ -1,3 +1,3 @@
 #!/bin/bash
-wget -P .. https://raw.githubusercontent.com/ZobaOkafor/alx-low_level_programming/master/0x18-dynamic_libraries/libhack101.so
-export LD_PRELOAD="$PWD/../libhack101.so"
+gcc -shared -o libhack101.so -fPIC hack101.c
+export LD_PRELOAD=./libhack101.so:$LD_LIBRARY_PATH
