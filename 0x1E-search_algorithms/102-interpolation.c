@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "search_algos.h"
 
 /**
@@ -12,17 +11,28 @@
  */
 int interpolation_search(int *array, size_t size, int value)
 {
-	size_t low = 0, high = size - 1;
-	size_t pos;
+	size_t low = 0, high = size - 1, pos;
+	double f;
 
 	if (array == NULL || size == 0)
 		return (-1);
 
-	while (low <= high && value >= array[low] && value <= array[high])
+	while (array[low] < value && array[high] >= value)
 	{
-		pos = low + (((double)(high - low) / (array[high] -
-			array[low])) * (value - array[low]));
-		printf("Value checked array[%lu] = [%d]\n", pos, array[pos]);
+		f = (double)(high - low) / (array[high] -
+			array[low]) * (value - array[low]);
+		pos = low + (size_t)f;
+		printf("Value checked array[%lu]", pos);
+
+		if (pos >= size)
+		{
+			printf(" is out of range\n");
+			break;
+		}
+		else
+		{
+			printf(" = [%d]\n", array[pos]);
+		}
 
 		if (array[pos] == value)
 			return (pos);
@@ -33,6 +43,12 @@ int interpolation_search(int *array, size_t size, int value)
 			high = pos - 1;
 	}
 
-	printf("Value checked array[%lu] is out of range\n", pos);
+	if (array[low] == value)
+	{
+		printf("Value checked array[%lu] = [%d]\n", low, array[low]);
+		return (low);
+	}
+
+	printf("Value checked array[%lu] is out of range\n", low);
 	return (-1);
 }
