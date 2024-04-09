@@ -13,42 +13,34 @@
  */
 int jump_search(int *array, size_t size, int value)
 {
-	int step;
+	int m, k = 0;
 	int prev = 0;
-	int low, high, mid;
+	int index = 0;
 
 	if (array == NULL || size == 0)
 		return (-1);
 
-	step = sqrt(size); /*Jump step size*/
+	m = (int)sqrt((double)size);
+	prev = index = 0;
 
-	printf("Value checked array[%d] = [%d]\n", prev, array[prev]);
+	do {
+		printf("Value checked array[%d] = [%d]\n", index, array[index]);
 
-	while (array[step] < value && step < (int)size)
+		if (array[index] == value)
+			return (index);
+
+		prev = index;
+		index = k * m;
+		k++;
+	} while (index < (int)size && array[index] < value);
+
+	printf("Value found between indexes [%d] and [%d]\n", prev, index);
+
+	for (prev = 0; prev <= index && prev < (int)size; prev++)
 	{
-		prev = step;
-		step += sqrt(size);
-		if (step < (int)size)
-			printf("Value checked array[%d] = [%d]\n", step, array[step]);
-	}
-
-	printf("Value found between indexes [%d] and [%d]\n", prev, step);
-
-	/*Perform binary search within the identified range*/
-	low = prev;
-	high = (step < (int)size ? step : (int)size - 1);
-
-	while (low <= high)
-	{
-		mid = low + (high - low) / 2;
-		printf("Value checked array[%d] = [%d]\n", mid, array[mid]);
-
-		if (array[mid] == value)
-			return (mid);
-		else if (array[mid] < value)
-			low = mid + 1;
-		else
-			high = mid - 1;
+		printf("Value checked array[%d] = [%d]\n", prev, array[prev]);
+		if (array[prev] == value)
+			return (prev);
 	}
 
 	return (-1);
