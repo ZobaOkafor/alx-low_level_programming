@@ -13,9 +13,9 @@
  */
 int jump_search(int *array, size_t size, int value)
 {
-	int i, step;
+	int step;
 	int prev = 0;
-	int low, high;
+	int low, high, mid;
 
 	if (array == NULL || size == 0)
 		return (-1);
@@ -36,7 +36,7 @@ int jump_search(int *array, size_t size, int value)
 
 	/*Perform binary search within the identified range*/
 	low = prev;
-	high = (step < (int)size ? step : size - 1);
+	high = (step < (int)size ? step : (int)size - 1);
 
 	while (low <= high)
 	{
