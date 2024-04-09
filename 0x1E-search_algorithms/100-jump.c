@@ -15,11 +15,12 @@ int jump_search(int *array, size_t size, int value)
 {
 	int i, step;
 	int prev = 0;
+	int low, high;
 
 	if (array == NULL || size == 0)
 		return (-1);
 
-	step = sqrt(size); /* Jump step size */
+	step = sqrt(size); /*Jump step size*/
 
 	printf("Value checked array[%d] = [%d]\n", prev, array[prev]);
 
@@ -33,11 +34,21 @@ int jump_search(int *array, size_t size, int value)
 
 	printf("Value found between indexes [%d] and [%d]\n", prev, step);
 
-	for (i = prev; i <= (step < (int)size ? step : size - 1); i++)
+	/*Perform binary search within the identified range*/
+	low = prev;
+	high = (step < (int)size ? step : size - 1);
+
+	while (low <= high)
 	{
-		printf("Value checked array[%d] = [%d]\n", i, array[i]);
-		if (array[i] == value)
-			return (i);
+		mid = low + (high - low) / 2;
+		printf("Value checked array[%d] = [%d]\n", mid, array[mid]);
+
+		if (array[mid] == value)
+			return (mid);
+		else if (array[mid] < value)
+			low = mid + 1;
+		else
+			high = mid - 1;
 	}
 
 	return (-1);
